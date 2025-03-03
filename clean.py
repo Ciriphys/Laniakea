@@ -22,39 +22,57 @@ def WrapperRemoveTree(path):
 
 def DarwinCleanMakefile():
     RemoveFile("Makefile")
-    RemoveFile("Build/Makefile")
+    RemoveFile("Build/Core/Makefile")
+    RemoveFile("Build/Sandbox/Makefile")
     WrapperRemoveTree(".vscode/")
     return
 
 def DarwinCleanXCode():
-    workspace = f"{projectName}.xcworkspace/"
-    project = f"Build/{projectName}.xcodeproj/"
+    workspace = f"{projectName1}.xcworkspace/"
+    project = f"Build/Core/{projectName1}.xcodeproj/"
     WrapperRemoveTree(workspace)
     WrapperRemoveTree(project)
+
+    workspace = f"{projectName2}.xcworkspace/"
+    project = f"Build/Sandbox/{projectName2}.xcodeproj/"
+    WrapperRemoveTree(workspace)
+    WrapperRemoveTree(project)
+
     print(f"Cleaned {workspace}, {project}.")
     return
 
 def WinCleanVS():
-    solution = f"{projectName}.sln"
-    project = f"Build/{projectName}.vcxproj"
-    user = f"Build/{projectName}.vcxproj.user"
-    filt = f"Build/{projectName}.vcxproj.filters"
-    vsfold = ".vs/"
+    solution = f"Laniakea.sln"
     RemoveFile(solution)
+
+    project = f"Build/Core/{projectName1}.vcxproj"
+    user = f"Build/Core/{projectName1}.vcxproj.user"
+    filt = f"Build/Core/{projectName1}.vcxproj.filters"
+    vsfold = ".vs/"
     RemoveFile(project)
     RemoveFile(user)
     RemoveFile(filt)
+
+    project = f"Build/Sandbox/{projectName2}.vcxproj"
+    user = f"Build/Sandbox/{projectName2}.vcxproj.user"
+    filt = f"Build/Sandbox/{projectName2}.vcxproj.filters"
+    vsfold = ".vs/"
+    RemoveFile(project)
+    RemoveFile(user)
+    RemoveFile(filt)
+
     WrapperRemoveTree(vsfold)
     return
 
 if __name__ == "__main__":
     system = platform.system()
-    projectName = "Laniakea" # TODO : Change project name
+    projectName1 = "Library"
+    projectName2 = "Sandbox"
 
     if system == "Darwin":
         if os.path.exists("Makefile") or os.path.exists(".vscode/"):
             DarwinCleanMakefile()
-        if os.path.exists(f"{projectName}.xcworkspace"):
+        if os.path.exists(f"{projectName1}.xcworkspace") and os.path.exists(f"{projectName2}.xcworkspace"):
             DarwinCleanXCode()
 
     elif system == "Windows":
