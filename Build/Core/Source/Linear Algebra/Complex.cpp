@@ -139,7 +139,7 @@ void Complex::operator*=(double scalar)
     }
 }
 
-LNK_API std::ostream& operator<<(std::ostream& os, Complex& z)
+LNK_API std::ostream& operator<<(std::ostream& os, const Complex& z)
 {
     char sign = z.Im > 0 ? '+' : '-';
 

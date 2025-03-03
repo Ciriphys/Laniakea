@@ -55,7 +55,7 @@ struct LNK_API Complex {
 
 	// Utility
 	
-	LNK_API friend std::ostream& operator<<(std::ostream& os, Complex& z);
+	LNK_API friend std::ostream& operator<<(std::ostream& os, const Complex& z);
 	bool operator==(const Complex& other);
 	bool operator!=(const Complex& other);
 	Complex operator-();
