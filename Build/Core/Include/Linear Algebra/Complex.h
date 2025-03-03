@@ -54,6 +54,7 @@ struct LNK_API Complex {
 	void operator*=(double scalar);
 
 	// Utility
+	
 	LNK_API friend std::ostream& operator<<(std::ostream& os, Complex& z);
 	bool operator==(const Complex& other);
 	bool operator!=(const Complex& other);

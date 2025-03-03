@@ -4,13 +4,13 @@
 	#ifdef LNK_WIN
 		#define LNK_API __declspec(dllexport)
 	#else
-		#define LNK_API extern
+		#define LNK_API
 	#endif
 #else
 	#ifdef LNK_WIN
 		#define LNK_API __declspec(dllimport)
 	#else
-		#define LNK_API extern
+		#define LNK_API
 	#endif
 #endif
 

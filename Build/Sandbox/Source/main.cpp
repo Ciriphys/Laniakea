@@ -5,7 +5,7 @@
 int main() 
 {
 	Laniakea::DisplayLog("Hello, World!\n");
-	Complex z = Complex(2.0, 3.0);
+	Complex z = Complex(2.0, 3.0, ComplexForm::Cartesian);
 	Complex w = Complex::One();
 
 	std::cout << z + w << std::endl;
