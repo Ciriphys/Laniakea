@@ -6,7 +6,7 @@
 
 #ifdef LNK_DEBUG 
 	#define LNK_ASSERT(expression, message) if(!(expression)) Laniakea::Assert(#expression, Laniakea::RelativeToBuildPath(__FILE__).c_str(), __FUNCTION__, __LINE__, message)
-	#define LNK_DEBUG_INFO(function) DisplayFunctionInfo(#function, __FUNCTION__); function
+	#define LNK_DEBUG_INFO(function) Laniakea::DisplayFunctionInfo(#function, __FUNCTION__); function
 #else 
 	#define LNK_ASSERT(expression, message)
 	#define LNk_DEBUG_INFO(function) function;
