@@ -2,6 +2,7 @@
 
 #include "lnkpch.h"
 
+#include <Linary Algebra/Complex.h>
 #include <Utility/Macro.h>
 
 struct LNK_API Vec2 {
@@ -24,5 +25,13 @@ struct LNK_API Vec2 {
 	void operator-=(const Vec2& other);
 	void operator*=(double lambda);
 
+	// Utility
 	LNK_API friend std::ostream& operator<<(std::ostream& os, const Vec2& vector);
+	bool operator==(const Vec2& other);
+	bool operator!=(const Vec2& other);
+	Complex ToComplex();
+
+	static Vec2 Zero();
+	static Vec2 e1();
+	static Vec2 e2();
 };

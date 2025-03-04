@@ -59,3 +59,33 @@ LNK_API std::ostream& operator<<(std::ostream& os, const Vec2& vector)
 	os << "(" << vector.x << ", " << vector.y << ")";
 	return os;
 }
+
+bool operator==(const Vec2& other) 
+{
+	return x == other.x && y == other.y;
+}
+
+bool operator!=(const Vec2& other) 
+{
+	return !operator==(other);
+}
+
+Complex ToComplex() 
+{
+	return Complex(x, y);
+}
+
+static Vec2 Zero() 
+{
+	return Vec2(0.0, 0.0);
+}
+
+static Vec2 e1()
+{
+	return Vec2(1.0, 0.0);
+}
+
+static Vec2 e2()
+{
+	return Vec2(0.0, 1.0);
+}

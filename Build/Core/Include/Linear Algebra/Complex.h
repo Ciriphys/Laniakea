@@ -2,6 +2,7 @@
 
 #include "lnkpch.h"
 
+#include <Linary Algebra/Vec2.h>
 #include <Utility/Macro.h>
 
 enum class ComplexForm : int {
@@ -54,7 +55,6 @@ struct LNK_API Complex {
 	void operator*=(double scalar);
 
 	// Utility
-	
 	LNK_API friend std::ostream& operator<<(std::ostream& os, const Complex& z);
 	bool operator==(const Complex& other);
 	bool operator!=(const Complex& other);
@@ -64,6 +64,8 @@ struct LNK_API Complex {
 	static Complex Zero(ComplexForm form = ComplexForm::Cartesian);
 	static Complex One(ComplexForm form = ComplexForm::Cartesian);
 	static Complex Imaginary(ComplexForm form = ComplexForm::Cartesian);
+
+	Vec2 ToVec2();
 };
 
 LNK_API void Conjugate(Complex& z);
