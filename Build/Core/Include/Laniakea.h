@@ -3,6 +3,7 @@
 // Linear Algebra
 
 #include <Linear Algebra/Complex.h>
+#include <Linear Algebra/Vec2.h>
 
 // Numeric
 
