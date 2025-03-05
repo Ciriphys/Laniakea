@@ -1,5 +1,6 @@
 #include "lnkpch.h"
 
+#include <Linear Algebra/Complex.h>
 #include <Linear Algebra/Vec2.h>
 #include <Utility/Debug.h>
 
@@ -60,32 +61,114 @@ LNK_API std::ostream& operator<<(std::ostream& os, const Vec2& vector)
 	return os;
 }
 
-bool operator==(const Vec2& other) 
+bool Vec2::operator==(const Vec2& other) 
 {
 	return x == other.x && y == other.y;
 }
 
-bool operator!=(const Vec2& other) 
+bool Vec2::operator!=(const Vec2& other) 
 {
 	return !operator==(other);
 }
 
-Complex ToComplex() 
+Complex Vec2::ToComplex() 
 {
 	return Complex(x, y);
 }
 
-static Vec2 Zero() 
+Vec2 Vec2::Zero()
 {
 	return Vec2(0.0, 0.0);
 }
 
-static Vec2 e1()
+Vec2 Vec2::e1()
 {
 	return Vec2(1.0, 0.0);
 }
 
-static Vec2 e2()
+Vec2 Vec2::e2()
 {
 	return Vec2(0.0, 1.0);
+}
+
+ComplexVec2::ComplexVec2(Complex _x, Complex _y) : x(_x), y(_y) {}
+
+double ComplexVec2::Norm()
+{
+	return sqrt(x.Modulus2() + y.Modulus2());
+}
+
+double ComplexVec2::Norm2()
+{
+	return x.Modulus2() + y.Modulus2();
+}
+
+ComplexVec2 ComplexVec2::operator+(const ComplexVec2& other)
+{
+	return ComplexVec2(x + other.x, y + other.y);
+}
+
+ComplexVec2 ComplexVec2::operator-(const ComplexVec2& other)
+{
+	return ComplexVec2(x - other.x, y - other.y);;
+}
+
+ComplexVec2 ComplexVec2::operator*(Complex lambda)
+{
+	return ComplexVec2(x * lambda, y * lambda);
+}
+
+// Computes the standard scalar product
+Complex ComplexVec2::operator*(ComplexVec2 other)
+{
+	return x * *other.x + y * *other.y;
+}
+
+void ComplexVec2::operator+=(const ComplexVec2& other)
+{
+	x += other.x;
+	y += other.y;
+}
+
+void ComplexVec2::operator-=(const ComplexVec2& other)
+{
+	x -= other.x;
+	y -= other.y;
+}
+
+void ComplexVec2::operator*=(Complex lambda)
+{
+	x *= lambda;
+	y *= lambda;
+}
+
+LNK_API std::ostream& operator<<(std::ostream& os, const ComplexVec2& vector)
+{
+	os << "(" << vector.x << ", " << vector.y << ")";
+	return os;
+}
+
+bool ComplexVec2::operator==(const ComplexVec2& other)
+{
+	return x == other.x && y == other.y;
+}
+
+bool ComplexVec2::operator!=(const ComplexVec2& other)
+{
+	return !operator==(other);
+}
+
+ComplexVec2 ComplexVec2::Zero()
+{
+	return ComplexVec2(0.0, 0.0);
+}
+
+ComplexVec2 ComplexVec2::e1()
+{
+	return ComplexVec2(1.0, 0.0);
+}
+
+ComplexVec2 ComplexVec2::e2()
+{
+	return ComplexVec2(0.0, 1.0);
 }

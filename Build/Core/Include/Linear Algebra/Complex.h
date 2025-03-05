@@ -2,13 +2,14 @@
 
 #include "lnkpch.h"
 
-#include <Linary Algebra/Vec2.h>
 #include <Utility/Macro.h>
 
 enum class ComplexForm : int {
 	Cartesian = 0,
 	Polar = 1
 };
+
+struct Vec2;
 
 struct LNK_API Complex {
 	union {

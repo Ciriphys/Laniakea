@@ -1,6 +1,7 @@
 #include "lnkpch.h"
 
 #include <Linear Algebra/Complex.h>
+#include <Linear Algebra/Vec2.h>
 
 #include <Utility/Debug.h>
 
@@ -146,7 +147,9 @@ LNK_API std::ostream& operator<<(std::ostream& os, const Complex& z)
     if (z.form == ComplexForm::Cartesian)
     {
         if (z.Im != 0) {
-            os << z.Re << ' ' << sign << ' ' << abs(z.Im) << 'i';
+            os << z.Re << ' ' << sign << ' ';
+            if (abs(z.Im) != 1.0) os << abs(z.Im);
+            os << 'i';
         }
         else {
             os << z.Re;
@@ -199,6 +202,12 @@ Complex Complex::One(ComplexForm form)
 Complex Complex::Imaginary(ComplexForm form)
 {
     return form == ComplexForm::Cartesian ? Complex(0.0, 1.0, form) : Complex(1.0, M_PI / 2, form);
+}
+
+Vec2 Complex::ToVec2()
+{
+    if(form == ComplexForm::Polar) ToCartesian();
+    return Vec2(Re, Im);
 }
 
 LNK_API void Conjugate(Complex& z)

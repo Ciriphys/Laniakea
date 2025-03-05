@@ -16,8 +16,8 @@ workspace "Laniakea"
         targetdir   ( "Binaries/" .. outDir .. "/%{prj.name}" )
         objdir      ( "Binaries/Objects/" .. outDir .. "/%{prj.name}" )
 
-        files { "Build/Sandbox/Source/**.cpp" }
-        includedirs { "Build/Core", "Build/Core/Include" }
+        files { "Build/Sandbox/Source/**.cpp", "Build/Sandbox/Include/**.h" }
+        includedirs { "Build/Core", "Build/Core/Include", "Build/Sandbox/Include" }
 
         links { "Library" }
 
