@@ -1,6 +1,8 @@
 # 🌌 Laniakea
 Laniakea is a Ultra-Light Dark Matter Dynamics Pseudo-Spectral solver written in C/C++.
 
+![Soliton merging](Gallery/merge8.gif "Soliton merging") ![Gravitating solitons](Gallery/gravitating_solitons.gif "Gravitating solitons")
+
 ## 🚀 Motivation 
 This project is based on the original work by Dr. Faber Edwards et al. ([arXiv:1807.04037](https://arxiv.org/abs/1807.04037)) and aims to develop a **faster and more scalable simulation framework** for Ultra-Light Dark Matter (ULDM) models.
 
