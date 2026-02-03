@@ -5,3 +5,5 @@ uldm.dSYM/
 test.dSYM/
 *.csv
 .vscode/
+configs/settings.cfg
+*.dat
