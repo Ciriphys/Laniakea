@@ -9,6 +9,14 @@ This project is based on the original work by Dr. Faber Edwards et al. ([arXiv:1
 Compared to the existing [PyUltraLight](https://github.com/auckland-cosmo/PyUltraLight) codebase, my implementation is designed for **high-performance computing**, enabling large-scale simulations on modern hardware.
 At the current state, the algorithm is **faster** than the original implementation and provides **mostly identical** results. You can plot the results using the provided python scripts.
 
+It works by solving a Schrödinger-Poisson system using a pseudo-spectral method, involving a leap-frog evolution procedure and successive Fourier Transforms over a grid. The wave function of the system evolves according to the following set of equations:
+```math
+i\hbar \frac{\partial \psi}{\partial t}(\vec{x}, t) = \left[-\frac{\hbar^2}{2m} \nabla^2 + m\Phi(\vec{x}, t)\right]\psi(\vec{x}, t)
+```
+```math
+\nabla^2 \Phi(\vec{x}, t) = 4\pi mG|\psi(\vec{x}, t)|^2
+```
+
 ## 🛠️ Installation
 To get started, clone the repository using the command and compile the project using make **AFTER** you install FFTW and FFmpeg: 
 ```
